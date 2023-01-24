@@ -1,20 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StatusBar } from "expo-status-bar";
+import BottomTabNavigator from "./navigations/BottomTabNavigator";
+import ProductScreen from "./screens/ProductScreen";
+import ProductsListScreen from "./screens/ProductsListScreen";
+import SearchScreen from "./screens/SearchScreen";
+
+import store from "./store";
+import { Provider } from "react-redux";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Provider store={store}>
+        <StatusBar
+          style="light"
+          backgroundColor="#111"
+          translucent={false}
+        ></StatusBar>
+
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="TabNavigation" component={BottomTabNavigator} />
+          <Stack.Screen
+            name="ProductsListScreen"
+            component={ProductsListScreen}
+          />
+          <Stack.Screen name="ProductScreen" component={ProductScreen} />
+          <Stack.Screen
+            name="SearchScreen"
+            component={SearchScreen}
+          ></Stack.Screen>
+        </Stack.Navigator>
+      </Provider>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
