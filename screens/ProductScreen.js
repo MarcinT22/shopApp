@@ -5,13 +5,13 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 import ProductGallery from "../components/ProductGallery";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { currencyFormatter } from "../helpers/helpers";
+
 import { useDispatch, useSelector } from "react-redux";
 import { addToBasket, setCount } from "../features/basketSlice";
 
 import ModalAdded from "../components/ModalAdded";
 
-const ProductScreen = () => {
+export default function ProductScreen() {
   const navigation = useNavigation();
 
   const {
@@ -36,19 +36,10 @@ const ProductScreen = () => {
   const dispatch = useDispatch();
 
   const addItemToBasket = () => {
-    if (!data.quantity) {
-      data.quantity = counter;
-    }
     dispatch(setCount(counter));
     dispatch(addToBasket(data));
     setAddedCart(true);
-    setCounter(1);
   };
-
-  // const removeItemFromBasket = () => {
-  //   if (!items.length > 0) return;
-  //   dispatch(removeFromBasket(data));
-  // };
 
   return (
     <SafeAreaView className="bg-white flex-1 relative">
@@ -79,11 +70,11 @@ const ProductScreen = () => {
               <View className="w-1/2">
                 {data.oldPrice && (
                   <Text className="line-through text-right font-semibold text-3xl color-[#d2d2d2]">
-                    {currencyFormatter(data.oldPrice)}
+                    {data.oldPrice}
                   </Text>
                 )}
                 <Text className="text-4xl text-right font-semibold color-[#229f85]">
-                  {currencyFormatter(data.price)}
+                  {data.price}
                 </Text>
               </View>
             </View>
@@ -148,6 +139,4 @@ const ProductScreen = () => {
       )}
     </SafeAreaView>
   );
-};
-
-export default ProductScreen;
+}

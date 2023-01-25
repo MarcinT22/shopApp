@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
-  count: 0,
+  count: 1,
   removedItem: [],
 };
 
@@ -14,12 +14,15 @@ export const basketSlice = createSlice({
       const itemInCart = state.items.find(
         (item) => item.id === action.payload.id
       );
+
       if (itemInCart) {
-        if (itemInCart.quantity < itemInCart.count) {
+        if (itemInCart.quantity + itemInCart.count < itemInCart.count) {
           itemInCart.quantity += state.count;
+        } else {
+          itemInCart.quantity = itemInCart.count;
         }
       } else {
-        state.items = [...state.items, action.payload];
+        state.items.push({ ...action.payload, quantity: state.count });
       }
     },
     setCount: (state, action) => {
@@ -47,6 +50,7 @@ export const basketSlice = createSlice({
       const removeItem = state.items.filter(
         (item) => item.id !== action.payload.id
       );
+
       state.items = removeItem;
     },
 

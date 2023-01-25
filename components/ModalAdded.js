@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity, Modal } from "react-native";
 import React from "react";
-import { currencyFormatter } from "../helpers/helpers";
+
 import { useNavigation } from "@react-navigation/native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 export default function AddedCart({ data, quantity, setAddedCart }) {
@@ -41,7 +41,7 @@ export default function AddedCart({ data, quantity, setAddedCart }) {
                 {quantity} x {data.title}
               </Text>
               <Text className="text-xl font-bold color-[#229F85]">
-                {currencyFormatter(data.price)}
+                {data.price}
               </Text>
             </View>
           </View>

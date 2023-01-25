@@ -6,11 +6,11 @@ import {
   SafeAreaView,
   ScrollView,
 } from "react-native";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectBasketItems } from "../features/basketSlice";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import CartItem from "../components/CartItem";
 import RemoveItem from "../components/RemoveItem";
 

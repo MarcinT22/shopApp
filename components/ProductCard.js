@@ -1,7 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { currencyFormatter } from "../helpers/helpers";
 
 export default function ProductCard({ data }) {
   const navigation = useNavigation();
@@ -24,9 +23,7 @@ export default function ProductCard({ data }) {
         <Text className="text-xm leading-5 color-black" numberOfLines={2}>
           {data.title}
         </Text>
-        <Text className="text-lg font-bold color-[#229F85]">
-          {currencyFormatter(data.price)}
-        </Text>
+        <Text className="text-lg font-bold color-[#229F85]">{data.price}</Text>
       </TouchableOpacity>
     </View>
   );

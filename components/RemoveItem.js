@@ -5,7 +5,7 @@ import { undoRemoveItem } from "../features/basketSlice";
 import { useDispatch } from "react-redux";
 import { Animated } from "react-native";
 
-export default function RemoveItem({ setShowRemove }) {
+export default function RemoveItem() {
   const dispatch = useDispatch();
 
   const [fadeAnim] = useState(new Animated.Value(0));
@@ -20,9 +20,8 @@ export default function RemoveItem({ setShowRemove }) {
 
   useEffect(() => {
     const invervalID = setTimeout(() => {
-      //   setShowRemove(false);
       fadeOut();
-    }, 5000);
+    }, 2000);
 
     return () => {
       clearTimeout(invervalID);
@@ -38,7 +37,6 @@ export default function RemoveItem({ setShowRemove }) {
   }, []);
 
   const undoRemove = () => {
-    // setShowRemove(false);
     fadeOut();
 
     dispatch(undoRemoveItem());

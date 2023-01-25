@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-import { currencyFormatter } from "../helpers/helpers";
+
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useDispatch } from "react-redux";
 import {
@@ -9,7 +9,6 @@ import {
   removeFromBasket,
   removeItem,
 } from "../features/basketSlice";
-import { useEffect } from "react";
 
 export default function CartItem({ data, setShowRemove }) {
   const dispatch = useDispatch();
@@ -26,7 +25,7 @@ export default function CartItem({ data, setShowRemove }) {
     setShowRemove(false);
     setTimeout(() => {
       setShowRemove(true);
-    }, 300);
+    }, 200);
     dispatch(removeItem(data));
   };
 
@@ -44,9 +43,7 @@ export default function CartItem({ data, setShowRemove }) {
         <Text numberOfLines={2} className="text-xs">
           {data.title}
         </Text>
-        <Text className="font-semibold text-lg">
-          {currencyFormatter(data.price)}
-        </Text>
+        <Text className="font-semibold text-lg">{data.price}</Text>
         <TouchableOpacity
           onPress={() => remove()}
           className="absolute right-12 bottom-2"

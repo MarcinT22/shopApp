@@ -5,6 +5,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   ScrollView,
+  ImageBackground,
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -22,25 +23,26 @@ export default function ProductsListScreen() {
 
   return (
     <SafeAreaView className="bg-white">
-      <TouchableOpacity
-        className="absolute top-4 left-4 z-20"
-        onPress={() => navigation.goBack()}
-      >
-        <Ionicons name="arrow-back" color="#f05f7a" size={40} />
-      </TouchableOpacity>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View className="relative">
-          <View className="absolute z-10 bg-black/30 h-44 rounded-b-[30px] w-full"></View>
-          <Image
-            className="h-44 rounded-b-[30px]"
+        <View className="rounded-b-[30px] overflow-hidden">
+          <ImageBackground
+            className="h-44 w-full"
             source={{
               uri: data.imgUrl,
             }}
-            resizeMode="contain"
-          />
-          <Text className="color-white text-3xl font-bold absolute left-4 z-20 bottom-6">
-            {data.title}
-          </Text>
+            resizeMode="cover"
+          >
+            <View className="absolute z-10 bg-black/30 h-44 rounded-b-[30px] w-full"></View>
+            <TouchableOpacity
+              className="absolute top-4 left-4 z-20"
+              onPress={() => navigation.goBack()}
+            >
+              <Ionicons name="arrow-back" color="#f05f7a" size={40} />
+            </TouchableOpacity>
+            <Text className="color-white text-3xl font-bold absolute left-4 z-20 bottom-6">
+              {data.title}
+            </Text>
+          </ImageBackground>
         </View>
         <View className="px-4 pb-2 mt-5">
           <Text className="font-black text-lg uppercase mb-1 ">

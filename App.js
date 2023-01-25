@@ -1,4 +1,3 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
@@ -18,7 +17,7 @@ export default function App() {
       <Provider store={store}>
         <StatusBar
           style="light"
-          backgroundColor="#111"
+          backgroundColor="#222"
           translucent={false}
         ></StatusBar>
 

@@ -16,7 +16,7 @@ export default function HomeHeader() {
       <Image
         className="h-44 rounded-b-[30px]"
         source={{
-          uri: "https://skrawkinatury.lkucza.lk.pl/media/upload/2022/11/28/baner.jpg",
+          uri: "https://skrawkinatury.lkucza.lk.pl/media/default/banner-page.jpg",
         }}
       />
       <View className="absolute top-[85px] left-4 right-4 justify-center items-center">
@@ -37,7 +37,7 @@ export default function HomeHeader() {
         <Image
           className="w-[180px] h-[30px]"
           source={{
-            uri: "https://skrawkinatury.lkucza.lk.pl/media/upload/2022/11/28/logo.png",
+            uri: "https://skrawkinatury.pl/skins/store_user/store_033c0b92ded3ced1903cfbda7fe14bbb_2/images/logo.png",
           }}
         />
       </View>
