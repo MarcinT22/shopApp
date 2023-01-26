@@ -3,6 +3,8 @@ import React from "react";
 
 import { useNavigation } from "@react-navigation/native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { formatPrice } from "../helpers/helpers";
+
 export default function AddedCart({ data, quantity, setAddedCart }) {
   const navigation = useNavigation();
   return (
@@ -41,7 +43,7 @@ export default function AddedCart({ data, quantity, setAddedCart }) {
                 {quantity} x {data.title}
               </Text>
               <Text className="text-xl font-bold color-[#229F85]">
-                {data.price}
+                {formatPrice(data.price)}
               </Text>
             </View>
           </View>

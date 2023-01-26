@@ -20,6 +20,12 @@ export default function CartScreen() {
 
   const [showRemove, setShowRemove] = useState(false);
 
+  useEffect(() => {
+    navigation.addListener("focus", () => {
+      setShowRemove(false);
+    });
+  });
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <View className="fixed p-5">

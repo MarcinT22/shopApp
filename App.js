@@ -24,6 +24,7 @@ export default function App() {
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
+            animation: "fade",
           }}
         >
           <Stack.Screen name="TabNavigation" component={BottomTabNavigator} />

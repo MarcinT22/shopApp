@@ -7,7 +7,7 @@ export default function ProductGallery({ images }) {
   const Item = ({ imgUrl, index }) => (
     <Image
       className="w-screen h-96"
-      resizeMode="cover"
+      resizeMode="center"
       source={{
         uri: imgUrl,
       }}
@@ -16,7 +16,7 @@ export default function ProductGallery({ images }) {
 
   return (
     <View className="relative">
-      {images ? (
+      {images && images.length > 1 ? (
         <View>
           <View className="rounded-b-[30px] overflow-hidden">
             <FlatList
@@ -48,15 +48,30 @@ export default function ProductGallery({ images }) {
             })}
           </View>
         </View>
-      ) : (
+      ) : images.length > 0 ? (
         <Image
           className="w-screen h-96 rounded-b-[30px] overflow-hidden"
-          resizeMode="contain"
+          resizeMode="center"
           source={{
             uri: "https://robotyka.pl/wp-content/themes/Robotyka/assets/images/noimage.png",
           }}
         ></Image>
+      ) : (
+        <Image
+          className="w-screen h-96 rounded-b-[30px] overflow-hidden"
+          resizeMode="center"
+          source={{
+            uri: images.image,
+          }}
+        ></Image>
       )}
+      <View className="flex-row my-3">
+        <View className="mx-4 py-1 px-2 rounded bg-[#f0f0f0]">
+          <Text className="text-[#555]">
+            {currentIndex + 1} / {images.length ? images.length : 1}
+          </Text>
+        </View>
+      </View>
     </View>
   );
 }

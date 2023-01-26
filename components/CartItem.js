@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-
+import { formatPrice } from "../helpers/helpers";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useDispatch } from "react-redux";
 import {
@@ -43,7 +43,7 @@ export default function CartItem({ data, setShowRemove }) {
         <Text numberOfLines={2} className="text-xs">
           {data.title}
         </Text>
-        <Text className="font-semibold text-lg">{data.price}</Text>
+        <Text className="font-semibold text-lg">{formatPrice(data.price)}</Text>
         <TouchableOpacity
           onPress={() => remove()}
           className="absolute right-12 bottom-2"

@@ -2,8 +2,11 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
+import { formatPrice } from "../helpers/helpers";
+
 export default function ProductCard({ data }) {
   const navigation = useNavigation();
+
   return (
     <View className="w-1/2 p-2 ">
       <TouchableOpacity
@@ -15,7 +18,7 @@ export default function ProductCard({ data }) {
           <Image
             className="w-full h-36 rounded "
             source={{
-              uri: data.imgUrl,
+              uri: data.image,
             }}
             resizeMode="contain"
           />
@@ -23,7 +26,9 @@ export default function ProductCard({ data }) {
         <Text className="text-xm leading-5 color-black" numberOfLines={2}>
           {data.title}
         </Text>
-        <Text className="text-lg font-bold color-[#229F85]">{data.price}</Text>
+        <Text className="text-lg font-bold color-[#229F85]">
+          {formatPrice(data.price)}
+        </Text>
       </TouchableOpacity>
     </View>
   );

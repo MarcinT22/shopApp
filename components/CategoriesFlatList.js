@@ -2,8 +2,10 @@ import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import CategoriesCard from "./CategoriesCard";
 import { categoriesData } from "../data/categoriesData";
+import { useState } from "react";
+import ApiManager from "../axios";
 
-export default function CategoriesFlatList() {
+export default function CategoriesFlatList({ categories }) {
   return (
     <View className="py-5">
       <Text className="font-black text-lg uppercase mb-1 px-4">Kategorie</Text>
@@ -14,7 +16,7 @@ export default function CategoriesFlatList() {
           paddingHorizontal: 15,
         }}
       >
-        {categoriesData.map((data, key) => {
+        {categories.map((data, key) => {
           return (
             <View key={key}>
               <CategoriesCard data={data}></CategoriesCard>

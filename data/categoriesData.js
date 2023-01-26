@@ -2,29 +2,29 @@ export const categoriesData = [
   {
     id: 1,
     imgUrl:
-      "http://skrawkinatury.lkucza.lk.pl/thumbnails/w295-h295-ec//media/upload/2022/11/28/link2.jpg",
-    title: "Miski i patery",
+      "https://cdn.pixabay.com/photo/2017/10/08/23/26/apple-2831949__340.png",
+    title: "Electronics",
     count: 50,
   },
   {
     id: 2,
     imgUrl:
-      "http://skrawkinatury.lkucza.lk.pl/thumbnails/w620-h620-ec//media/upload/2022/11/28/link1.jpg",
-    title: "Talerze",
+      "https://cdn.pixabay.com/photo/2010/12/13/09/59/jewellery-2043__340.jpg",
+    title: "Jewelery",
     count: 20,
   },
   {
     id: 3,
     imgUrl:
-      "http://skrawkinatury.lkucza.lk.pl/thumbnails/w620-h620-ec//media/upload/2022/11/28/link3.jpg",
-    title: "Wazony",
+      "https://cdn.pixabay.com/photo/2017/08/15/13/23/buy-online-t-shirts-2643876__340.jpg",
+    title: "Men's clothing",
     count: 30,
   },
   {
     id: 4,
     imgUrl:
-      "http://skrawkinatury.lkucza.lk.pl/thumbnails/w620-h620-ec//media/upload/2022/11/28/link4.jpg",
-    title: "Osłonki",
+      "https://cdn.pixabay.com/photo/2020/01/22/15/12/fashion-4785539__340.jpg",
+    title: "Women's clothing",
     count: 26,
   },
 ];
