@@ -64,7 +64,7 @@ export default function ProductScreen() {
             <View className="flex-row justify-between items-center">
               <View className="w-1/2">
                 <Text className="text-base leading-7">
-                  Dostępność: {data.count} szt.
+                  Dostępność: {data.count ?? 1} szt.
                 </Text>
                 <Text className="text-base  leading-7">
                   Wysyłka: do 48 godzin

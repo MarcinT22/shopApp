@@ -32,9 +32,9 @@ export default function AddedCart({ data, quantity, setAddedCart }) {
             <View className="rounded-[3px] overflow-hidden border border-[#f0f0f0] w-1/3">
               <Image
                 className="w-full h-20"
-                resizeMode="cover"
+                resizeMode="contain"
                 source={{
-                  uri: data.imgUrl,
+                  uri: data.image,
                 }}
               />
             </View>

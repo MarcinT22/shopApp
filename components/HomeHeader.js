@@ -36,7 +36,7 @@ export default function HomeHeader() {
 
       <View className="absolute z-20 flex content-center items-center top-[35px] left-0 right-0 justify-center items-center">
         <Image
-          className="w-[180px] h-[30px]"
+          className="w-[180px] h-[50px]"
           source={{
             uri: "https://skrawkinatury.pl/skins/store_user/store_033c0b92ded3ced1903cfbda7fe14bbb_2/images/logo.png",
           }}

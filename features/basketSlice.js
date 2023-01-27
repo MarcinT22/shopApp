@@ -22,7 +22,7 @@ export const basketSlice = createSlice({
           itemInCart.quantity = itemInCart.count;
         }
       } else {
-        state.items.push({ ...action.payload, quantity: state.count });
+        state.items.push({ ...action.payload, quantity: state.count ?? 1 });
       }
     },
     setCount: (state, action) => {
@@ -83,5 +83,12 @@ export const selectBasketItems = (state) => state.basket.items;
 
 export const selectBasketItemsWithId = (state, id) =>
   state.basket.items.filter((item) => item.id == id);
+
+export const getTotalPrice = (state) => {
+  return state.basket.items.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+};
 
 export default basketSlice.reducer;

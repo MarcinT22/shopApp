@@ -9,6 +9,7 @@ import Account from "../screens/Account";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useSelector } from "react-redux";
 import { selectBasketItems } from "../features/basketSlice";
+import Login from "../screens/Login";
 
 const Tab = createBottomTabNavigator();
 

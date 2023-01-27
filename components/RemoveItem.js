@@ -45,7 +45,7 @@ export default function RemoveItem() {
   return (
     <Animated.View
       style={{ opacity: fadeAnim }}
-      className="absolute bottom-[70px] left-2 right-2 bg-[#efefef] border-l-4 border-[#229F85] p-4 flex-row justify-between items-center shadow shadow-black/50"
+      className=" bg-[#efefef] border-l-4 border-[#229F85] p-4 flex-row justify-between items-center shadow shadow-black/50"
     >
       <Text className="text-sm">Usunięto produkt z koszyka</Text>
       <TouchableOpacity onPress={() => undoRemove()}>

@@ -7,6 +7,7 @@ import {
   ScrollView,
   ImageBackground,
   ActivityIndicator,
+  Animated,
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -23,6 +24,15 @@ export default function ProductsListScreen() {
   const [products, setProducts] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  const [fadeAnim] = useState(new Animated.Value(0));
+
+  const fadeIn = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  };
   const {
     params: { data },
   } = useRoute();
@@ -38,6 +48,7 @@ export default function ProductsListScreen() {
       console.log(error);
     } finally {
       setLoading(false);
+      fadeIn();
     }
   };
   useEffect(() => {
@@ -74,17 +85,20 @@ export default function ProductsListScreen() {
               Lista produktów ({products.length})
             </Text>
           )}
-          <View className="flex-row flex-wrap mx-[-8px]">
-            {isLoading ? (
-              <View className="items-center justify-center flex-1 py-10">
-                <ActivityIndicator size="large" />
+
+          {isLoading ? (
+            <View className="items-center justify-center flex-1 py-10">
+              <ActivityIndicator size="large" />
+            </View>
+          ) : (
+            <Animated.View style={{ opacity: fadeAnim }}>
+              <View className="flex-row flex-wrap mx-[-8px]">
+                {products.map((data, key) => {
+                  return <ProductCard key={key} data={data} />;
+                })}
               </View>
-            ) : (
-              products.map((data, key) => {
-                return <ProductCard key={key} data={data} />;
-              })
-            )}
-          </View>
+            </Animated.View>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -8,6 +8,9 @@ import SearchScreen from "./screens/SearchScreen";
 
 import store from "./store";
 import { Provider } from "react-redux";
+import { NativeWindStyleSheet } from "nativewind";
+import CartScreen from "./screens/CartScreen";
+import Login from "./screens/Login";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,10 +36,12 @@ export default function App() {
             component={ProductsListScreen}
           />
           <Stack.Screen name="ProductScreen" component={ProductScreen} />
+          <Stack.Screen name="Cart" component={CartScreen} />
           <Stack.Screen
             name="SearchScreen"
             component={SearchScreen}
           ></Stack.Screen>
+          <Stack.Screen name="Login" component={Login}></Stack.Screen>
         </Stack.Navigator>
       </Provider>
     </NavigationContainer>
