@@ -5,18 +5,53 @@ import {
   Image,
   TextInput,
   Button,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import ApiManager from "../axios";
 
 export default function Login() {
   const [isSecurePassword, setIsSecurePassword] = useState(true);
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const signIn = () => {
-    console.log("login: " + login);
-    console.log("password: " + password);
+  const signIn = async () => {
+    if (!login) {
+      setIsLoading(false);
+      setError(true);
+      setErrorMessage("Wprowadź adres e-mail");
+      return false;
+    }
+    if (!password) {
+      setIsLoading(false);
+      setError(true);
+      setErrorMessage("Wprowadź hasło");
+      return false;
+    }
+
+    setError(false);
+    setIsLoading(true);
+
+    try {
+      const response = await ApiManager.post(
+        "https://fakestoreapi.com/auth/login",
+        {
+          username: login,
+          password: password,
+        }
+      );
+      console.log(response.data.token);
+      alert(response.data.token);
+    } catch (error) {
+      setError(true);
+      setErrorMessage("Nieprawidłowy e-mail lub hasło");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -28,6 +63,13 @@ export default function Login() {
         }}
       />
       <Text className="color-black text-3xl font-black mb-6">Moje konto</Text>
+      {error && (
+        <View className="mb-6 p-2 w-full rounded-lg bg-red-100 border border-red-200">
+          <Text className="text-center text-base color-red-400">
+            {errorMessage}
+          </Text>
+        </View>
+      )}
       <TextInput
         placeholder="E-mail"
         placeholderTextColor="#B1B1B1"
@@ -54,12 +96,16 @@ export default function Login() {
         </TouchableOpacity>
       </View>
       <TouchableOpacity
-        className="rounded-[10px] bg-[#229F85] w-full p-3"
+        className="rounded-[10px] bg-[#229F85] justify-center items-center w-full p-3 h-14"
         onPress={() => signIn()}
       >
-        <Text className="color-white text-xl text-center font-black">
-          Zaloguj się
-        </Text>
+        {!isLoading ? (
+          <Text className="color-white text-xl text-center font-black">
+            Zaloguj się
+          </Text>
+        ) : (
+          <ActivityIndicator size="small" color="white" />
+        )}
       </TouchableOpacity>
       <TouchableOpacity>
         <Text className="color-[#229F85] text-base mt-3">
