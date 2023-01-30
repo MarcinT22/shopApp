@@ -9,7 +9,9 @@ import Account from "../screens/Account";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useSelector } from "react-redux";
 import { selectBasketItems } from "../features/basketSlice";
+import { isSignedIn } from "../features/userSlice";
 import Login from "../screens/Login";
+import AccountData from "../screens/AccountData";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +19,7 @@ const Stack = createNativeStackNavigator();
 
 function BottomTabNavigator() {
   const items = useSelector(selectBasketItems);
+  const userSignedIn = useSelector(isSignedIn);
 
   return (
     <Tab.Navigator
@@ -63,21 +66,44 @@ function BottomTabNavigator() {
         }}
         component={CartScreen}
       />
-      <Tab.Screen
-        name="Account"
-        options={{
-          headerShown: false,
 
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="account"
-              color={color}
-              size={size}
-            ></MaterialCommunityIcons>
-          ),
-        }}
-        component={Account}
-      />
+      {userSignedIn ? (
+        <>
+          <Tab.Screen
+            name="AccountData"
+            options={{
+              headerShown: false,
+
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons
+                  name="account"
+                  color={color}
+                  size={size}
+                ></MaterialCommunityIcons>
+              ),
+            }}
+            component={AccountData}
+          />
+        </>
+      ) : (
+        <>
+          <Tab.Screen
+            name="Account"
+            options={{
+              headerShown: false,
+
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons
+                  name="account"
+                  color={color}
+                  size={size}
+                ></MaterialCommunityIcons>
+              ),
+            }}
+            component={Account}
+          />
+        </>
+      )}
     </Tab.Navigator>
   );
 }

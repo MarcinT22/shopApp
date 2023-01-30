@@ -1,11 +1,17 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
 const Account = () => {
   const navigation = useNavigation();
   return (
-    <View className="flex-1 bg-white items-center justify-center  mt-[-100px] px-10">
+    <SafeAreaView className="flex-1 bg-white items-center justify-center  mt-[-100px] px-10">
       <Image
         className="w-[180px] h-[50px] mb-10"
         source={{
@@ -21,13 +27,13 @@ const Account = () => {
           Zaloguj się
         </Text>
       </TouchableOpacity>
-      <Text className="color-black text-2xl mb-3 mt-10">Nie masz konta?</Text>
+      <Text className="color-black text-xl mb-3 mt-10">Nie masz konta?</Text>
       <TouchableOpacity className="rounded-[10px] bg-[#F05F7A] w-full p-3">
         <Text className="color-white text-xl text-center font-black">
           Zarejestruj się
         </Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 

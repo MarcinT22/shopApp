@@ -5,7 +5,11 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import ProductGallery from "../components/ProductGallery";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 
 import { useDispatch, useSelector } from "react-redux";
 import { addToBasket, setCount } from "../features/basketSlice";

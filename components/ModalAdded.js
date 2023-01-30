@@ -9,13 +9,7 @@ export default function AddedCart({ data, quantity, setAddedCart }) {
   const navigation = useNavigation();
   return (
     <View className="absolute top-0 right-0 bottom-0 left-0 z-30 bg-black/50">
-      <Modal
-        animationType="slide"
-        transparent={true}
-        onRequestClose={() => {
-          setAddedCart(false);
-        }}
-      >
+      <Modal animationType="slide" transparent={true}>
         <View className="absolute rounded-t-[10px]  top-2/3 right-0 left-0 bottom-0 p-4 bg-white">
           <View className="flex-row items-center justify-between">
             <Text className="text-xl font-bold">
@@ -60,7 +54,9 @@ export default function AddedCart({ data, quantity, setAddedCart }) {
             </View>
             <View className="w-1/2">
               <TouchableOpacity
-                onPress={() => navigation.navigate("Cart")}
+                onPress={() => {
+                  navigation.navigate("Cart");
+                }}
                 className="justify-center h-full leading-5  bg-[#F05F7A] ml-1 rounded-[3px] p-2"
               >
                 <Text className="text-xs color-white text-center font-bold uppercase">

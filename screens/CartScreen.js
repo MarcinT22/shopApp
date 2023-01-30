@@ -14,7 +14,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import CartItem from "../components/CartItem";
 import RemoveItem from "../components/RemoveItem";
-import { formatCurrency } from "react-native-format-currency";
+
 import { formatPrice } from "../helpers/helpers";
 
 export default function CartScreen() {

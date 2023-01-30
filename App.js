@@ -36,7 +36,7 @@ export default function App() {
             component={ProductsListScreen}
           />
           <Stack.Screen name="ProductScreen" component={ProductScreen} />
-          <Stack.Screen name="Cart" component={CartScreen} />
+
           <Stack.Screen
             name="SearchScreen"
             component={SearchScreen}

@@ -16,10 +16,12 @@ export const basketSlice = createSlice({
       );
 
       if (itemInCart) {
-        if (itemInCart.quantity + itemInCart.count < itemInCart.count) {
-          itemInCart.quantity += state.count;
-        } else {
-          itemInCart.quantity = itemInCart.count;
+        if (itemInCart.count) {
+          if (itemInCart.quantity + itemInCart.count < itemInCart.count) {
+            itemInCart.quantity += state.count;
+          } else {
+            itemInCart.quantity = itemInCart.count;
+          }
         }
       } else {
         state.items.push({ ...action.payload, quantity: state.count ?? 1 });
