@@ -9,7 +9,11 @@ export default function AddedCart({ data, quantity, setAddedCart }) {
   const navigation = useNavigation();
   return (
     <View className="absolute top-0 right-0 bottom-0 left-0 z-30 bg-black/50">
-      <Modal animationType="slide" transparent={true}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => setAddedCart(false)}
+      >
         <View className="absolute rounded-t-[10px]  top-2/3 right-0 left-0 bottom-0 p-4 bg-white">
           <View className="flex-row items-center justify-between">
             <Text className="text-xl font-bold">
