@@ -38,6 +38,7 @@ function BottomTabNavigator() {
         tabBarShowLabel: false,
         tabBarInactiveTintColor: "#444",
         tabBarActiveTintColor: "#229F85",
+        tabBarHideOnKeyboard: true,
       }}
     >
       <Tab.Screen

@@ -54,7 +54,7 @@ export default function CartScreen() {
     navigation.addListener("focus", () => {
       setShowRemove(false);
     });
-  });
+  }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-white">

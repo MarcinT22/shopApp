@@ -59,7 +59,7 @@ export default function ProductScreen() {
         </TouchableOpacity>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View className="relative">
-            <ProductGallery images={data.gallery ? data.gallery : data} />
+            <ProductGallery images={data.images ? data.images : data} />
           </View>
           <View className="px-4 pb-5 pt-2">
             <Text className="text-2xl font-bold color-bold mb-5">

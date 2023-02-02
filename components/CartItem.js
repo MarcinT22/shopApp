@@ -41,7 +41,7 @@ export default function CartItem({ data, setShowRemove }) {
       >
         <View className="w-1/3">
           <Image
-            source={{ uri: data.image }}
+            source={{ uri: data.images[0] }}
             className="w-28 h-28 rounded-[10px]"
             resizeMode="contain"
           />

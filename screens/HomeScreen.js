@@ -11,18 +11,19 @@ import RecommendedProducts from "../components/RecommendedProducts";
 import { useState } from "react";
 import ApiManager from "../axios";
 import { useEffect } from "react";
-import { categoriesData } from "../data/categoriesData";
+// import { categoriesData } from "../data/categoriesData";
 
 export default function HomeScreen() {
-  const [categories, setCategories] = useState([]);
+  const [categoriesData, setCategoriesData] = useState([]);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const getData = async () => {
     try {
-      // const categories = await ApiManager.get("/products/categories");
-      const products = await ApiManager.get("/products?limit=8");
-      // setCategories(categories.data);
+      const categories = await ApiManager.get("/categories");
+      const products = await ApiManager.get("/products?offset=0&limit=10");
+
+      setCategoriesData(categories.data);
       setProducts(products.data);
     } catch (error) {
       console.log(error);

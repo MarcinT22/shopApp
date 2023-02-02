@@ -28,7 +28,10 @@ const Account = () => {
         </Text>
       </TouchableOpacity>
       <Text className="color-black text-xl mb-3 mt-10">Nie masz konta?</Text>
-      <TouchableOpacity className="rounded-[10px] bg-[#F05F7A] w-full p-3">
+      <TouchableOpacity
+        className="rounded-[10px] bg-[#F05F7A] w-full p-3"
+        onPress={() => navigation.navigate("Register")}
+      >
         <Text className="color-white text-xl text-center font-black">
           Zarejestruj się
         </Text>

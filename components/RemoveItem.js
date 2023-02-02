@@ -26,7 +26,7 @@ export default function RemoveItem() {
     return () => {
       clearTimeout(invervalID);
     };
-  });
+  }, []);
 
   useEffect(() => {
     Animated.timing(fadeAnim, {

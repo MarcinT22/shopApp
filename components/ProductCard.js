@@ -18,9 +18,12 @@ export default function ProductCard({ data }) {
           <Image
             className="w-full h-36 rounded "
             source={{
-              uri: data.image,
+              uri:
+                data.images.length > 0
+                  ? data.images[0]
+                  : "https://robotyka.pl/wp-content/themes/Robotyka/assets/images/noimage.png",
             }}
-            resizeMode="contain"
+            resizeMode="cover"
           />
         </View>
         <Text className="text-xm leading-5 color-black" numberOfLines={2}>

@@ -28,7 +28,7 @@ export default function AddedCart({ data, quantity, setAddedCart }) {
                 className="w-full h-20"
                 resizeMode="contain"
                 source={{
-                  uri: data.image,
+                  uri: data.images[0],
                 }}
               />
             </View>

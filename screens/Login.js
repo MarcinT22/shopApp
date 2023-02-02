@@ -17,29 +17,18 @@ import { useDispatch } from "react-redux";
 import { userSignIn } from "../features/userSlice";
 import { useNavigation } from "@react-navigation/native";
 import { setUser } from "../features/userSlice";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login() {
   const [isSecurePassword, setIsSecurePassword] = useState(true);
-  const [login, setLogin] = useState("kevinryan");
-  const [password, setPassword] = useState("kev02937@");
+  const [login, setLogin] = useState("john@mail.com");
+  const [password, setPassword] = useState("changeme");
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
-
-  const getUserData = async () => {
-    try {
-      const response = await ApiManager.get(
-        "/users/" + Math.floor(Math.random() * 10)
-      );
-
-      dispatch(setUser(response.data));
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const signIn = async () => {
     if (!login) {
@@ -60,15 +49,15 @@ export default function Login() {
 
     try {
       const response = await ApiManager.post(
-        "https://fakestoreapi.com/auth/login",
+        "https://api.escuelajs.co/api/v1/auth/login",
         {
-          username: login,
+          email: login,
           password: password,
         }
       );
 
-      await dispatch(userSignIn(response.data.token));
-      getUserData();
+      await dispatch(userSignIn(response.data.access_token));
+      await AsyncStorage.setItem("token", response.data.access_token);
 
       navigation.navigate("AccountData");
     } catch (error) {
@@ -145,7 +134,7 @@ export default function Login() {
         </View>
         <View className="flex-row justify-center pb-3">
           <Text className="color-black text-base mr-1 ">Nie masz konta?</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Register")}>
             <Text className="color-[#229F85] text-base ">Zarejestruj się!</Text>
           </TouchableOpacity>
         </View>

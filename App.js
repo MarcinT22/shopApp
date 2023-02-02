@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import { NativeWindStyleSheet } from "nativewind";
 import CartScreen from "./screens/CartScreen";
 import Login from "./screens/Login";
+import Register from "./screens/Register";
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +43,7 @@ export default function App() {
             component={SearchScreen}
           ></Stack.Screen>
           <Stack.Screen name="Login" component={Login}></Stack.Screen>
+          <Stack.Screen name="Register" component={Register}></Stack.Screen>
         </Stack.Navigator>
       </Provider>
     </NavigationContainer>

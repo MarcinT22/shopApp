@@ -39,9 +39,7 @@ export default function ProductsListScreen() {
 
   const getProducts = async () => {
     try {
-      const response = await ApiManager.get(
-        "/products/category/" + data.title.toLowerCase()
-      );
+      const response = await ApiManager.get(`/products/?categoryId=${data.id}`);
 
       setProducts(response.data);
     } catch (error) {
@@ -68,14 +66,14 @@ export default function ProductsListScreen() {
           <ImageBackground
             className="h-44 w-full"
             source={{
-              uri: data.imgUrl,
+              uri: data.image,
             }}
             resizeMode="cover"
           >
             <View className="absolute z-10 bg-black/30 h-44 rounded-b-[30px] w-full"></View>
 
             <Text className="color-white text-3xl font-bold absolute left-4 z-20 bottom-6">
-              {data.title}
+              {data.name}
             </Text>
           </ImageBackground>
         </View>

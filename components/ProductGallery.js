@@ -4,10 +4,11 @@ const { width } = Dimensions.get("window");
 
 export default function ProductGallery({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+
   const Item = ({ imgUrl, index }) => (
     <Image
       className="w-screen h-96"
-      resizeMode="center"
+      resizeMode="cover"
       source={{
         uri: imgUrl,
       }}
@@ -16,7 +17,7 @@ export default function ProductGallery({ images }) {
 
   return (
     <View className="relative">
-      {images && images.length > 1 ? (
+      {images && images.length >= 1 ? (
         <View>
           <View className="rounded-b-[30px] overflow-hidden">
             <FlatList
@@ -29,7 +30,7 @@ export default function ProductGallery({ images }) {
               showsHorizontalScrollIndicator={false}
               data={images}
               renderItem={({ item, key }) => (
-                <Item imgUrl={item.imgUrl} keyExtractor={(item) => key} />
+                <Item imgUrl={item} keyExtractor={(item) => key} />
               )}
             />
           </View>
@@ -65,10 +66,10 @@ export default function ProductGallery({ images }) {
           }}
         ></Image>
       )}
-      <View className="flex-row my-3">
+      <View className="flex-row my-3 absolute bottom-0">
         <View className="mx-4 py-1 px-2 rounded bg-[#f0f0f0]">
           <Text className="text-[#555]">
-            {currentIndex + 1} / {images.length ? images.length : 1}
+            {parseInt(currentIndex) + 1} / {images.length ? images.length : 1}
           </Text>
         </View>
       </View>
