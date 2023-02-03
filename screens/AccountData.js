@@ -24,6 +24,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import * as ImagePicker from "expo-image-picker";
 import { useLayoutEffect } from "react";
+import MapView from "react-native-maps";
+import { Marker } from "react-native-maps";
 
 export default function AccountData() {
   const navigation = useNavigation();
@@ -185,6 +187,27 @@ export default function AccountData() {
                 </View>
               </View>
             </View>
+
+            <MapView
+              className="w-full h-80"
+              initialRegion={{
+                latitude: 49.8013615,
+                longitude: 18.7823873,
+                latitudeDelta: 0.02,
+                longitudeDelta: 0.02,
+              }}
+            >
+              <Marker
+                coordinate={{ latitude: 49.8013615, longitude: 18.7823873 }}
+                title="BM Skoczów Punkt 1"
+                description="Skoczów, ul. Wałowa 3"
+              ></Marker>
+              <Marker
+                coordinate={{ latitude: 49.8016531, longitude: 18.7860007 }}
+                title="BM Skoczów Punkt 2"
+                description="Skoczów, Galeria Pledan"
+              ></Marker>
+            </MapView>
           </ScrollView>
         </View>
       ) : (

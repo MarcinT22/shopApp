@@ -13,11 +13,28 @@ import CartScreen from "./screens/CartScreen";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
 
+import { useFonts } from "expo-font";
+import { useCallback } from "react";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    "Itim-Regular": require("./assets/fonts/Itim-Regular.ttf"),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      console.log("zaladowano");
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <NavigationContainer>
+    <NavigationContainer onLayout={onLayoutRootView}>
       <Provider store={store}>
         <StatusBar
           style="light"

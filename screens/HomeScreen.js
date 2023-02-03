@@ -2,6 +2,7 @@ import {
   ActivityIndicator,
   SafeAreaView,
   ScrollView,
+  Text,
   View,
 } from "react-native";
 import React from "react";
@@ -45,7 +46,12 @@ export default function HomeScreen() {
       )}
       <ScrollView showsVerticalScrollIndicator={false}>
         <HomeHeader />
-
+        <Text
+          className="text-center text-3xl "
+          style={{ fontFamily: "Itim-Regular" }}
+        >
+          Lorem ipsum
+        </Text>
         {!isLoading && (
           <View>
             <CategoriesFlatList categories={categoriesData} />
