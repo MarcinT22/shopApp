@@ -1,6 +1,6 @@
 # Shop App
 Shop app is a mobile application developed in React Native using Expo. The app allows users to browse products and add them to the shopping cart.
-In this version all data is taken from a free products api.
+In this version data is taken from a free products api.
 
 ## Features
 1. Browsing product
